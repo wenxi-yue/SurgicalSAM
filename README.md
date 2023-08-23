@@ -14,7 +14,7 @@ EndoVis2018 [1] and EndoVis2017 [2].
 
 ## Method
 <div align="center">
-  <img src="https://github.com/wenxi-yue/SurgicalSAM/assets/142413487/1102127f-d96a-4dab-8d56-541bfa213906" alt="Image 1" width="1000" height="360">
+  <img src="https://github.com/wenxi-yue/SurgicalSAM/assets/142413487/1102127f-d96a-4dab-8d56-541bfa213906" alt="Image 1" width="800" height="300">
 </div>
 
 ## Results 

@@ -1,33 +1,28 @@
-<h4 align="center"> SurgicalSAM: Efficient Class Promptable Surgical Instrument Segmentation </h1>
+<h2 align="center"> SurgicalSAM: Efficient Class Promptable Surgical Instrument Segmentation </h2>
 
 <h6 align="center"><em> Wenxi Yue, Jing Zhang, Kun Hu, Yong Xia, Jiebo Luo, Zhiyong Wang </em></h6>
 
-#### Abstract 
+## Abstract 
 [[`Paper`](https://arxiv.org/abs/2308.08746v1)] 
 
 The Segment Anything Model (SAM) is a powerful foundation model that has revolutionised image segmentation. To apply SAM to surgical instrument segmentation, a common approach is to locate precise points or boxes of instruments and then use them as prompts for SAM in a zero-shot manner. However, we observe two problems with this naive pipeline: (1) the domain gap between natural objects and surgical instruments leads to poor generalisation of SAM; and (2) SAM relies on precise point or box locations for accurate segmentation, requiring either extensive manual guidance or a well-performing specialist detector for prompt preparation, which leads to a complex multi-stage pipeline. To address these problems, we introduce SurgicalSAM, a novel end-to-end efficient-tuning approach for SAM to effectively integrate surgical-specific information with SAM's pre-trained knowledge for improved generalisation. Specifically, we propose a lightweight prototype-based class prompt encoder for tuning, which directly generates prompt embeddings from class prototypes and eliminates the use of explicit prompts for improved robustness and a simpler pipeline. In addition, to address the low inter-class variance among surgical instrument categories, we propose contrastive prototype learning, further enhancing the discrimination of the class prototypes for more accurate class prompting. The results of extensive experiments on both EndoVis2018 and EndoVis2017 datasets demonstrate that SurgicalSAM achieves state-of-the-art performance while only requiring a small number of tunable parameters.
 
-<div style="text-align: center;">
-  <figure>
-    <img src="assets/method.png?raw=true" alt="Description of the image" style="width: 100%;" />
-    <figcaption>Overview of SurgicalSAM </figcaption>
-  </figure>
-</div>
+<p align="center">
+  <img src="assets/method.png" alt="Image Description" width="YOUR_WIDTH" height="YOUR_HEIGHT">
+</p>
 
-#### Results
-<div style="text-align: center;">
-  <figure>
-    <img src="assets/vis_1.png?raw=true" alt="Description of the image" style="width: 100%;" />
-  </figure>
-</div>
 
-<div style="text-align: center;">
-  <figure>
-    <img src="assets/vis_2.png?raw=true" alt="Description of the image" style="width: 87%;" />
-  </figure>
-</div>
+## Results
+<p align="center">
+  <img src="assets/vis_1.png" alt="Image Description" width="YOUR_WIDTH" height="YOUR_HEIGHT">
+</p>
 
-#### Installation
+<p align="center">
+  <img src="assets/vis_2.png" alt="Image Description" width="YOUR_WIDTH" height="YOUR_HEIGHT">
+</p>
+
+
+## Installation
 
 Following [Segment Anything](https://github.com/facebookresearch/segment-anything), the code requires `python>=3.8`, as well as `pytorch>=1.7` and `torchvision>=0.8`. For SurgicalSAM, `python=3.8`, `pytorch=1.11.0`, and `torchvision=0.12.0` are used.
 
@@ -48,7 +43,8 @@ Following [Segment Anything](https://github.com/facebookresearch/segment-anythin
     git clone https://github.com/wenxi-yue/SurgicalSAM.git
     ```
 
-#### Datasets
+
+## Datasets
 We use the [EndoVis2018](https://endovissub2018-roboticscenesegmentation.grand-challenge.org/) [1] and [EndoVis2017](https://endovissub2017-roboticinstrumentsegmentation.grand-challenge.org/) [2] datasets in our experiments. 
 
 For EndoVis2018, we use the instrument type segmentation annotation provided [here](https://github.com/BCV-Uniandes/ISINet) by [3].
@@ -58,7 +54,7 @@ In SurgicalSAM, we use the pre-computed SAM features since the image encoder is 
 
 
 
-#### Model Checkpoints
+## Model Checkpoints
 
 In SurgicalSAM, `vit_h` is used. 
 
@@ -67,7 +63,7 @@ Please find the checkpoint of SAM in `vit_h` version [here](https://dl.fbaipubli
 We provide the checkpoint of our trained SurgicalSAM [here](https://drive.google.com/drive/folders/1i_r7hBFuzuhVBuMW0yAeHNr40TxTfWmg?usp=sharing).
 
 
-#### File Organisation
+##  File Organisation
 After downloading the data and model checkpoints, the files should be organised as follows.
 ```
 data/
@@ -97,7 +93,8 @@ surgicalSAM/
   ...
 ```
 
-#### Inference
+
+##  Inference
 To run inference on our provided SurgicalSAM checkpoints and obtain evaluation results:
 ```
 cd surgicalSAM/
@@ -106,8 +103,7 @@ python inference.py  --dataset endovis_2017  --fold 0
 ```
 
 
-
-#### Citing SurgicalSAM
+##  Citing SurgicalSAM
 
 ```
 @misc{yue2023surgicalsam,
@@ -120,10 +116,12 @@ python inference.py  --dataset endovis_2017  --fold 0
 }
 ```
 
-#### Acknowledgement
+
+##  Acknowledgement
 This project is built upon [Segment Anything](https://github.com/facebookresearch/segment-anything). We thank the authors for their great work.
 
-#### References
+
+##  References
 [1] Allan, M.; Kondo, S.; Bodenstedt, S.; Leger, S.; Kadkhodamohammadi, R.; Luengo, I.; Fuentes, F.; Flouty, E.; Mohammed, A.; Pedersen, M.; Kori, A.; Alex, V.; Krishnamurthi, G.; Rauber, D.; Mendel, R.; Palm, C.; Bano, S.; Saibro, G.; Shih, C.-S.; Chiang, H.-A.; Zhuang, J.; Yang, J.; Iglovikov, V.; Dobrenkii, A.; Reddiboina, M.; Reddy, A.; Liu, X.; Gao, C.; Unberath, M.; Kim, M.; Kim, C.; Kim, C.; Kim, H.; Lee, G.; Ullah, I.; Luna, M.; Park, S. H.; Azizian, M.; Stoyanov, D.; Maier-Hein, L.; and Speidel, S. 2020. 2018 Robotic Scene Segmentation Challenge. arXiv:2001.11190.
 
 [2] Allan, M.; Shvets, A.; Kurmann, T.; Zhang, Z.; Duggal, R.; Su, Y.-H.; Rieke, N.; Laina, I.; Kalavakonda, N.; Bodenstedt, S.; Herrera, L.; Li, W.; Iglovikov, V.; Luo, H.; Yang, J.; Stoyanov, D.; Maier-Hein, L.; Speidel, S.; and Azizian, M. 2019. 2017 Robotic Instrument Segmentation Challenge. arXiv:1902.06426.

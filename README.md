@@ -33,7 +33,7 @@ Following [Segment Anything](https://github.com/facebookresearch/segment-anythin
     ```
 2. Install Pytorch and TorchVision following the instructions [here](https://pytorch.org/get-started/locally/).
 
-3. Install other dependencies,
+3. Install other dependencies.
     ```
     pip install opencv-python einops
     ```

@@ -53,7 +53,7 @@ Following [Segment Anything](https://github.com/facebookresearch/segment-anythin
     conda create -n surgicalsam python=3.8 -y
     conda activate surgicalsam
     ```
-3. Install Pytorch and TorchVision. In our case, we use `pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 --extra-index-url https://download.pytorch.org/whl/cu113`. Please follow the instructions [here](https://pytorch.org/get-started/locally/) for installation in your specific conditon. 
+3. Install Pytorch and TorchVision. In our case, we use `pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 --extra-index-url https://download.pytorch.org/whl/cu113`. Please follow the instructions [here](https://pytorch.org/get-started/locally/) for installation in your specific condition. 
 
 4. Install other dependencies.
     ```

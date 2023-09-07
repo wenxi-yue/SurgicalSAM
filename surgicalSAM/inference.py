@@ -100,7 +100,7 @@ with torch.no_grad():
                 
         pred , pred_quality = model_forward_inference(protoype_prompt_encoder, sam_prompt_encoder, \
         sam_decoder, sam_feats, prototypes, cls_ids)    
-
+ 
         binary_masks = create_binary_masks(binary_masks, pred, pred_quality, mask_names, thr)
 
 endovis_masks = create_endovis_masks(binary_masks, 1024, 1280)

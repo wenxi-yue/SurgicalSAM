@@ -14,6 +14,9 @@ def create_binary_masks(binary_masks, preds, preds_quality, mask_names, thr):
     Returns:
         dict: a dictionary containing all predicted binary masks organised based on sequence, frame, and mask name
     """
+    preds = preds.cpu()
+    preds_quality = preds_quality.cpu()
+    
     pred_masks = (preds > thr).int()
     
 
@@ -27,7 +30,6 @@ def create_binary_masks(binary_masks, preds, preds_quality, mask_names, thr):
         
         if frame_name not in binary_masks[seq_name].keys():
             binary_masks[seq_name][frame_name] = list()
-            
             
         binary_masks[seq_name][frame_name].append({
             "mask_name": mask_name,
@@ -64,7 +66,7 @@ def create_endovis_masks(binary_masks, H, W):
             for binary_mask in binary_masks_list:
                 mask_name  = binary_mask["mask_name"]
                 predicted_label = int(re.search(r"class(\d+)", mask_name).group(1))
-                mask = binary_mask["mask"].cpu().numpy()
+                mask = binary_mask["mask"].numpy()
                 endovis_mask[mask==1] = predicted_label
 
             endovis_mask = endovis_mask.astype(int)

@@ -42,23 +42,23 @@ The Segment Anything Model (SAM) is a powerful foundation model that has revolut
 
 Following [Segment Anything](https://github.com/facebookresearch/segment-anything), the code requires `python>=3.8`, as well as `pytorch>=1.7` and `torchvision>=0.8`. For SurgicalSAM, `python=3.8`, `pytorch=1.11.0`, and `torchvision=0.12.0` are used.
 
-1. Create a virtual environment for SurgicalSAM and and activate the environment.
+1. Clone the repository.
+      ```
+      git clone https://github.com/wenxi-yue/SurgicalSAM.git
+      cd SurgicalSAM
+      ```
+
+2. Create a virtual environment for SurgicalSAM and and activate the environment.
     ```
     conda create -n surgicalsam python=3.8 -y
     conda activate surgicalsam
     ```
-2. Install Pytorch and TorchVision following the instructions [here](https://pytorch.org/get-started/locally/).
+3. Install Pytorch and TorchVision. In our case, we use `pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 --extra-index-url https://download.pytorch.org/whl/cu113`. Please follow the instructions [here](https://pytorch.org/get-started/locally/) for installation in your specific conditon. 
 
-3. Install other dependencies.
+4. Install other dependencies.
     ```
-    pip install opencv-python einops
+    pip install -r requirements.txt
     ```
-
-4. Clone the repository.
-    ```
-    git clone https://github.com/wenxi-yue/SurgicalSAM.git
-    ```
-
 
 ## Data
 We use the [EndoVis2018](https://endovissub2018-roboticscenesegmentation.grand-challenge.org/) [1] and [EndoVis2017](https://endovissub2017-roboticinstrumentsegmentation.grand-challenge.org/) [2] datasets in our experiments. 
@@ -67,7 +67,6 @@ For EndoVis2018, we use the instrument type segmentation annotation provided [he
 For EndoVis2017, we follow the pre-processing strategies and cross-validation splits provided [here](https://github.com/ternaus/robot-surgery-segmentation).
 
 In SurgicalSAM, we use the pre-computed SAM features since the image encoder is frozen. We provide the pre-computed SAM features and ground truth annotations [here](https://drive.google.com/drive/folders/1xQTOWYji_qlAmZAOz1EmvIP8x6vGyPRO?usp=sharing). You may use our provided pre-computed SAM features or [generate SAM features from scratch](https://github.com/facebookresearch/segment-anything). 
-
 
 
 ## Checkpoints
@@ -81,7 +80,6 @@ We provide the checkpoint of our trained SurgicalSAM [here](https://drive.google
 
 ##  File Organisation
 After downloading the data and model checkpoints, the files should be organised as follows.
-
 
   ```tree
   SurgicalSAM
@@ -134,6 +132,7 @@ python inference.py  --dataset endovis_2018
 python inference.py  --dataset endovis_2017  --fold 0
 ```
 
+The GPU memory usage for inference when using pre-computed feature is 2.16 GB. 
 
 ##  Citing SurgicalSAM
 

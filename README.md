@@ -68,6 +68,12 @@ For EndoVis2017, we follow the pre-processing strategies and cross-validation sp
 
 In SurgicalSAM, we use the pre-computed SAM features since the image encoder is frozen. We provide the pre-computed SAM features and ground truth annotations [here](https://drive.google.com/drive/folders/1xQTOWYji_qlAmZAOz1EmvIP8x6vGyPRO?usp=sharing). You may use our provided pre-computed SAM features or [generate SAM features from scratch](https://github.com/facebookresearch/segment-anything). 
 
+The **class ID** and **surgical instrument category** correspondence for the two datasets is shown below. 
+
+Dataset | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+:---: | :---: | :---: | :---: |:---: |:---: |:---: |:---: |
+**EndoVis2018** | Bipolar Forceps | Prograsp Forceps | Large Needle Driver | Monopolar Curved Scissors | Ultrasound Probe | Suction Instrument | Clip Applier |
+**EndoVis2017** | Bipolar Forceps | Prograsp Forceps | Large Needle Driver | Vessel Sealer | Grasping Retractor | Monopolar Curved Scissors | Others |
 
 ## Checkpoints
 

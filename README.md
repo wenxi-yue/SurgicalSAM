@@ -89,44 +89,48 @@ After downloading the data and model checkpoints, the files should be organised 
 
   ```tree
   SurgicalSAM
-      |_assets
+      |__assets
       |    ...
-      |_data
-      |    |_endovis_2018
-      |    |       |_train
+      |__data
+      |    |__endovis_2018
+      |    |       |__train
       |    |       |     ...
-      |    |       |_val
-      |    |            |_annotations
+      |    |       |__val
+      |    |            |__annotations
       |    |            |     ...
-      |    |            |_binary_annotations
+      |    |            |__binary_annotations
       |    |            |     ...
-      |    |            |_sam_features_h
+      |    |            |__sam_features_h
       |    |                  ...
       |    |                   
-      |    |_endovis_2017
-      |            |_annotations
+      |    |__endovis_2017
+      |            |__annotations
       |            |     ...
-      |            |_binary_annotations
+      |            |__binary_annotations
       |            |     ...
-      |            |_sam_features_h
+      |            |__sam_features_h
       |                   ...
       |                   
-      |_ckp
-      |    |_endovis_2018
-      |    |     ...
-      |    |_endovis_2017
-      |            |_fold0
+      |__ckp
+      |    |__sam
+      |    |   |__sam_vit_h_4b8939.pth
+      |    |
+      |    |__surgical_sam
+      |            |__endovis_2018
       |            |     ...
-      |            |_fold1
-      |            |     ...
-      |            |_fold2
-      |            |     ...
-      |            |_fold3
-      |                  ...
+      |            |__endovis_2017
+      |                    |__fold0
+      |                    |     ...
+      |                    |__fold1
+      |                    |     ...
+      |                    |__fold2
+      |                    |     ...
+      |                    |__fold3
+      |                          ...
       |   
-      |_segment_anything
+      |__segment_anything
       |    ...
-      |_surgicalSAM
+      |__surgicalSAM
            ...
   ```
 

@@ -1,6 +1,6 @@
 <h2 align="center"> SurgicalSAM: Efficient Class Promptable Surgical Instrument Segmentation </h2>
 <p align="center">
-<a href="https://arxiv.org/abs/2308.08746v1"><img src="https://img.shields.io/badge/arXiv-Paper-<color>"></a>
+<a href="https://arxiv.org/abs/2308.08746v2"><img src="https://img.shields.io/badge/arXiv-Paper-<color>"></a>
 </p>
 <h5 align="center"><em>Wenxi Yue, Jing Zhang, Kun Hu, Yong Xia, Jiebo Luo, Zhiyong Wang</em></h5>
 <p align="center">

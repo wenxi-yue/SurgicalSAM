@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import DataLoader
 from dataset import Endovis18Dataset, Endovis17Dataset
 from model import Prototype_Prompt_Encoder, Learnable_Prototypes
-from model_forward import model_forward_inference
+from model_forward import model_forward_function
 import argparse
 from utils import read_gt_endovis_masks, create_binary_masks, create_endovis_masks, eval_endovis
 
@@ -40,7 +40,8 @@ elif "17" in dataset_name:
     dataset = Endovis17Dataset(data_root_dir = data_root_dir, 
                                 mode = "val",
                                 fold = fold, 
-                                vit_mode = "h")
+                                vit_mode = "h",
+                                version = 0)
     surgicalSAM_ckp = f"../ckp/surgical_sam/{dataset_name}/fold{fold}/model_ckp.pth"
     
     gt_endovis_masks = read_gt_endovis_masks(data_root_dir = data_root_dir,
@@ -93,15 +94,14 @@ learnable_prototypes_model.eval()
 with torch.no_grad():
     prototypes = learnable_prototypes_model()
 
-    for sam_feats, mask_names, cls_ids in dataloader: 
+    for sam_feats, mask_names, cls_ids, _, _ in dataloader: 
         
         sam_feats = sam_feats.cuda()
         cls_ids = cls_ids.cuda()    
                 
-        pred , pred_quality = model_forward_inference(protoype_prompt_encoder, sam_prompt_encoder, \
-        sam_decoder, sam_feats, prototypes, cls_ids)    
+        preds , preds_quality = model_forward_function(protoype_prompt_encoder, sam_prompt_encoder, sam_decoder, sam_feats, prototypes, cls_ids)    
  
-        binary_masks = create_binary_masks(binary_masks, pred, pred_quality, mask_names, thr)
+        binary_masks = create_binary_masks(binary_masks, preds, preds_quality, mask_names, thr)
 
 endovis_masks = create_endovis_masks(binary_masks, 1024, 1280)
 endovis_results = eval_endovis(endovis_masks, gt_endovis_masks)

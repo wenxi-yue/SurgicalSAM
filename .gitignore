@@ -42,4 +42,5 @@ yarn.lock
 package-lock.json
 
 ckp/
+work_dirs/
 /data

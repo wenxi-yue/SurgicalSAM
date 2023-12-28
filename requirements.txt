@@ -1,2 +1,3 @@
 opencv-python 
 einops
+pytorch-metric-learning

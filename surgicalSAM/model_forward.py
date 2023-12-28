@@ -2,8 +2,8 @@ import torch
 from einops import rearrange
 from torch.nn import functional as F
 
-# forward process of the model 
-def model_forward_inference(prototype_prompt_encoder, 
+# forward process of the model
+def model_forward_function(prototype_prompt_encoder, 
                             sam_prompt_encoder, 
                             sam_decoder, 
                             sam_feats, 

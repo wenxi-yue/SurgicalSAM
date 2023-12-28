@@ -202,7 +202,7 @@ def read_gt_endovis_masks(data_root_dir = "../data/endovis_2018",
             
             seqs = fold_seq[fold]
         
-        gt_endovis_masks_path = osp.join(data_root_dir, "annotations")
+        gt_endovis_masks_path = osp.join(data_root_dir, "0", "annotations")
         
         for seq in seqs:
             for mask_name in os.listdir(osp.join(gt_endovis_masks_path, f"seq{seq}")):
@@ -214,3 +214,9 @@ def read_gt_endovis_masks(data_root_dir = "../data/endovis_2018",
     return gt_endovis_masks
 
 
+def print_log(str_to_print, log_file):
+    """Print a string and meanwhile write it to a log file
+    """
+    print(str_to_print)
+    with open(log_file, "a") as file:
+        file.write(str_to_print+"\n")

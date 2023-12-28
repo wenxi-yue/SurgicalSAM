@@ -1,6 +1,6 @@
-<h2 align="center"> SurgicalSAM: Efficient Class Promptable Surgical Instrument Segmentation </h2>
+<h2 align="center"> [AAAI2024] SurgicalSAM: Efficient Class Promptable Surgical Instrument Segmentation </h2>
 <p align="center">
-<a href="https://arxiv.org/abs/2308.08746v1"><img src="https://img.shields.io/badge/arXiv-Paper-<color>"></a>
+<a href="https://arxiv.org/abs/2308.08746v2"><img src="https://img.shields.io/badge/arXiv-Paper-<color>"></a>
 </p>
 <h5 align="center"><em>Wenxi Yue, Jing Zhang, Kun Hu, Yong Xia, Jiebo Luo, Zhiyong Wang</em></h5>
 <p align="center">
@@ -15,9 +15,15 @@
 
 ## News 
 
-**2023.09.06** - The processed data, checkpoints, and inference code are released!
+**2023.12.28** - Our paper is accepted to **AAAI2024**. The data preprocessing code and training code are released.
 
-**2023.08.21** - The tech report is posted on arxiv! Work in progress.
+**2023.09.06** - The processed data, checkpoints, and inference code are released. 
+
+**2023.08.21** - The tech report is posted on arxiv. Work in progress.
+
+> Please also check out our latest work SurgicalPart-SAM for text promptable surgical instrument segmentation:
+> **Part to Whole: Collaborative Prompting for Surgical Instrument Segmentation** ([**Paper**](https://arxiv.org/pdf/2312.14481.pdf) and [**Code**](https://github.com/wenxi-yue/SurgicalPart-SAM)).
+
 
 ## Abstract 
 The Segment Anything Model (SAM) is a powerful foundation model that has revolutionised image segmentation. To apply SAM to surgical instrument segmentation, a common approach is to locate precise points or boxes of instruments and then use them as prompts for SAM in a zero-shot manner. However, we observe two problems with this naive pipeline: (1) the domain gap between natural objects and surgical instruments leads to poor generalisation of SAM; and (2) SAM relies on precise point or box locations for accurate segmentation, requiring either extensive manual guidance or a well-performing specialist detector for prompt preparation, which leads to a complex multi-stage pipeline. To address these problems, we introduce SurgicalSAM, a novel end-to-end efficient-tuning approach for SAM to effectively integrate surgical-specific information with SAM's pre-trained knowledge for improved generalisation. Specifically, we propose a lightweight prototype-based class prompt encoder for tuning, which directly generates prompt embeddings from class prototypes and eliminates the use of explicit prompts for improved robustness and a simpler pipeline. In addition, to address the low inter-class variance among surgical instrument categories, we propose contrastive prototype learning, further enhancing the discrimination of the class prototypes for more accurate class prompting. The results of extensive experiments on both EndoVis2018 and EndoVis2017 datasets demonstrate that SurgicalSAM achieves state-of-the-art performance while only requiring a small number of tunable parameters.
@@ -68,6 +74,15 @@ For EndoVis2017, we follow the pre-processing strategies and cross-validation sp
 
 In SurgicalSAM, we use the pre-computed SAM features since the image encoder is frozen. We provide the pre-computed SAM features and ground truth annotations [here](https://drive.google.com/drive/folders/1xQTOWYji_qlAmZAOz1EmvIP8x6vGyPRO?usp=sharing). You may use our provided pre-computed SAM features or [generate SAM features from scratch](https://github.com/facebookresearch/segment-anything). 
 
+For inference, please follow the inference instructions below. No further data processing is needed. 
+
+For training, we augment the training data and pre-compute their SAM features before training (offline). Alternatively, you can opt for data augmentation during training (online), which provides greater augmentation diversity. Our training data augmentation is performed as below.
+```
+cd surgicalSAM/tools/
+python data_preprocess.py  --dataset endovis_2018  --n-version 40
+python data_preprocess.py  --dataset endovis_2017  --n-version 40
+```
+
 The **class ID** and **surgical instrument category** correspondence for the two datasets is shown below. 
 
 Dataset | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
@@ -85,50 +100,92 @@ We provide the checkpoint of our trained SurgicalSAM [here](https://drive.google
 
 
 ##  File Organisation
-After downloading the data and model checkpoints, the files should be organised as follows.
+After downloading the data and model checkpoints and preprocessing the data, the files should be organised as follows.
 
   ```tree
   SurgicalSAM
-      |_assets
+      |__assets
       |    ...
-      |_data
-      |    |_endovis_2018
-      |    |       |_train
-      |    |       |     ...
-      |    |       |_val
-      |    |            |_annotations
+      |__data
+      |    |__endovis_2018
+      |    |       |__train
+      |    |       |  |__0
+      |    |       |  |  |__binary_annotations
+      |    |       |  |  |     ...
+      |    |       |  |  |__class_embeddings_h
+      |    |       |  |  |     ...
+      |    |       |  |  |__images
+      |    |       |  |  |     ...
+      |    |       |  |  |__sam_features_h
+      |    |       |  |       ...
+      |    |       |  |__1
+      |    |       |  |  ...
+      |    |       |  |__2
+      |    |       |  |  ...
+      |    |       |  |__3
+      |    |       |  |  ...
+      |    |       |  |__...
+      |    |       |     
+      |    |       |__val
+      |    |            |__annotations
       |    |            |     ...
-      |    |            |_binary_annotations
+      |    |            |__binary_annotations
       |    |            |     ...
-      |    |            |_sam_features_h
+      |    |            |__class_embeddings_h
+      |    |            |     ...
+      |    |            |__sam_features_h
       |    |                  ...
       |    |                   
-      |    |_endovis_2017
-      |            |_annotations
-      |            |     ...
-      |            |_binary_annotations
-      |            |     ...
-      |            |_sam_features_h
-      |                   ...
+      |    |__endovis_2017
+      |              |__0
+      |              |  |__annotations
+      |              |  |     ...
+      |              |  |__binary_annotations
+      |              |  |     ...
+      |              |  |__class_embeddings_h
+      |              |  |     ...
+      |              |  |__images
+      |              |  |     ...
+      |              |  |__sam_features_h
+      |              |       ...
+      |              |__1
+      |              |  ...
+      |              |__2
+      |              |  ...
+      |              |__3
+      |              |  ...
+      |              |__...
       |                   
-      |_ckp
-      |    |_endovis_2018
-      |    |     ...
-      |    |_endovis_2017
-      |            |_fold0
+      |__ckp
+      |    |__sam
+      |    |   |__sam_vit_h_4b8939.pth
+      |    |
+      |    |__surgical_sam
+      |            |__endovis_2018
       |            |     ...
-      |            |_fold1
-      |            |     ...
-      |            |_fold2
-      |            |     ...
-      |            |_fold3
-      |                  ...
+      |            |__endovis_2017
+      |                    |__fold0
+      |                    |     ...
+      |                    |__fold1
+      |                    |     ...
+      |                    |__fold2
+      |                    |     ...
+      |                    |__fold3
+      |                          ...
       |   
-      |_segment_anything
+      |__segment_anything
       |    ...
-      |_surgicalSAM
+      |__surgicalSAM
            ...
   ```
+
+##  Train
+To train the model:
+```
+cd surgicalSAM/
+python train.py  --dataset endovis_2018
+python train.py  --dataset endovis_2017  --fold 0
+```
 
 ##  Inference
 To run inference on our provided SurgicalSAM checkpoints and obtain evaluation results:

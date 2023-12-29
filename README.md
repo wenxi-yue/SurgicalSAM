@@ -16,9 +16,9 @@
 
 ## News 
 
-**2023.12.28** - Our paper is accepted to **AAAI2024**. The data preprocessing code and training code are released.
+**2023.12.28** - Our paper is accepted to **AAAI2024**. The processed training data, data preprocessing code, and training code are released.
 
-**2023.09.06** - The processed data, checkpoints, and inference code are released. 
+**2023.09.06** - The processed validation data, checkpoints, and inference code are released. 
 
 **2023.08.21** - The tech report is posted on arxiv. Work in progress.
 
@@ -202,13 +202,11 @@ The GPU memory usage for inference when using pre-computed feature is 2.16 GB.
 
 If you find SurgicalSAM helpful, please consider citing:
 ```
-@misc{yue2023surgicalsam,
-      title={SurgicalSAM: Efficient Class Promptable Surgical Instrument Segmentation}, 
-      author={Wenxi Yue and Jing Zhang and Kun Hu and Yong Xia and Jiebo Luo and Zhiyong Wang},
-      year={2023},
-      eprint={2308.08746},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@inproceedings{yue_surgicalsam,
+  title={SurgicalSAM: Efficient Class Promptable Surgical Instrument Segmentation},
+  author={Wenxi Yue and Jing Zhang and Kun Hu and Yong Xia and Jiebo Luo and Zhiyong Wang},
+  booktitle={AAAI},
+  year={2024}
 }
 ```
 

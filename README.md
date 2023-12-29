@@ -202,9 +202,9 @@ The GPU memory usage for inference when using pre-computed feature is 2.16 GB.
 
 If you find SurgicalSAM helpful, please consider citing:
 ```
-@inproceedings{yue_surgicalsam,
+@article{yue_surgicalsam,
   title={SurgicalSAM: Efficient Class Promptable Surgical Instrument Segmentation},
-  author={Wenxi Yue and Jing Zhang and Kun Hu and Yong Xia and Jiebo Luo and Zhiyong Wang},
+  author={Yue, Wenxi and Zhang, Jing and Hu, Kun and Xia, Yong and Luo, Jiebo and Wang, Zhiyong},
   booktitle={AAAI},
   year={2024}
 }

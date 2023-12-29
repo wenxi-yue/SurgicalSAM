@@ -10,6 +10,7 @@
   <a href="#installation">Installation</a> |
   <a href="#data">Data</a> |
   <a href="#checkpoints">Checkpoints</a> |
+  <a href="#train">Train</a> |
   <a href="#inference">Inference</a>
 </p>
 

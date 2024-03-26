@@ -23,7 +23,7 @@
 **2023.08.21** - The tech report is posted on arxiv. Work in progress.
 
 > Please also check out our latest work SurgicalPart-SAM for text promptable surgical instrument segmentation:
-> **Part to Whole: Collaborative Prompting for Surgical Instrument Segmentation** ([**Paper**](https://arxiv.org/pdf/2312.14481.pdf) and [**Code**](https://github.com/wenxi-yue/SurgicalPart-SAM)).
+> **SurgicalPart-SAM: Part-to-Whole Collaborative Prompting for Surgical Instrument Segmentation** ([**Paper**](https://arxiv.org/pdf/2312.14481.pdf) and [**Code**](https://github.com/wenxi-yue/SurgicalPart-SAM)).
 
 
 ## Abstract 

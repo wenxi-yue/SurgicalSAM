@@ -97,7 +97,7 @@ In SurgicalSAM, `vit_h` is used.
 
 Please find the checkpoint of SAM in `vit_h` version [here](https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth). 
 
-We provide the checkpoint of our trained SurgicalSAM [in the ckp.zip here](https://unisyd-my.sharepoint.com/:u:/g/personal/wenxi_yue_sydney_edu_au/EYUxVQR7XxhDlLWsAL57IqIBbYw2RfCgHCslwGAuoNlCHQ?e=xnSJiF).
+We provide the checkpoint of our trained SurgicalSAM [in the ckp.zip here](https://drive.google.com/file/d/136P4Ay_9qn0zYehWYyBpSy7cN6-SWJGd/view?usp=sharing).
 
 
 ##  File Organisation
